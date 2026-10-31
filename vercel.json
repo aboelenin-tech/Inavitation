@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/Ibrahim & Noha – Katb Ketab.html"
+    }
+  ]
+}
