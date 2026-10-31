@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ibrahim &amp; Noha – Katb Ketab</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf5ec;--card:#fffdf8;--ink:#3b2f2a;--muted:#8a7a6e;--gold:#b08d57;--line:#e6d9c3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17130f;--card:#201a14;--ink:#f1e8d8;--muted:#a69886;--gold:#d2ad72;--line:#3a3025}}
+:root[data-theme="dark"]{--bg:#17130f;--card:#201a14;--ink:#f1e8d8;--muted:#a69886;--gold:#d2ad72;--line:#3a3025}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;text-align:center;min-height:100vh;display:flex;justify-content:center;padding:24px 16px}
+[dir=rtl] body,body.ar{font-family:"Amiri","Times New Roman",serif}
+.card{max-width:520px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:36px 24px;position:relative;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.card::before{content:"";position:absolute;inset:8px;border:1px solid var(--gold);border-radius:12px;opacity:.5;pointer-events:none}
+.lang{position:absolute;top:18px;inset-inline-end:20px;background:none;border:1px solid var(--line);color:var(--gold);border-radius:20px;padding:4px 12px;cursor:pointer;font:inherit;z-index:2}
+.orn{color:var(--gold);font-size:26px;letter-spacing:8px;margin:8px 0}
+.small{letter-spacing:.25em;text-transform:uppercase;font-size:14px;color:var(--muted)}
+body.ar .small{letter-spacing:0;text-transform:none;font-size:18px}
+h1{font-weight:600;font-size:clamp(38px,11vw,56px);margin:10px 0;line-height:1.1;color:var(--gold)}
+.amp{display:block;font-size:.5em;color:var(--muted)}
+.verse{color:var(--muted);font-size:18px;margin:12px auto;max-width:380px;line-height:1.5}
+.date{font-size:26px;margin:18px 0 4px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0}
+.grid div{border:1px solid var(--line);border-radius:12px;padding:10px 2px}
+.grid b{display:block;font-size:30px;font-weight:600;color:var(--gold);font-variant-numeric:tabular-nums}
+.grid span{font-size:13px;color:var(--muted)}
+.info{margin:18px 0;line-height:1.6;color:var(--muted);font-size:18px}
+input{width:100%;max-width:300px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:18px;text-align:center}
+.btn{display:inline-block;margin-top:14px;padding:11px 24px;border-radius:30px;background:var(--gold);color:var(--card);text-decoration:none;font-size:18px}
+#greet{font-size:22px;min-height:30px;margin:6px 0}
+</style>
+</head>
+<body>
+<main class="card">
+  <button class="lang" id="lang">عربي</button>
+  <div class="orn">✦ ✦ ✦</div>
+  <div class="small" data-k="bismillah">Together with their families</div>
+  <div id="greet"></div>
+  <h1><span data-k="n1">Ibrahim</span><span class="amp">&amp;</span><span data-k="n2">Noha</span></h1>
+  <p class="verse" data-k="verse">Invite you to celebrate their Katb Ketab</p>
+  <div class="date" data-k="date">Friday, 6 November 2026</div>
+  <div class="small" data-k="time">Time &amp; venue to be confirmed</div>
+
+  <div class="grid" id="cd">
+    <div><b id="d">0</b><span data-k="days">Days</span></div>
+    <div><b id="h">0</b><span data-k="hours">Hours</span></div>
+    <div><b id="m">0</b><span data-k="mins">Minutes</span></div>
+    <div><b id="s">0</b><span data-k="secs">Seconds</span></div>
+  </div>
+
+  <p class="info" data-k="note">Your presence and prayers will make our day complete.</p>
+  <input id="name" type="text" maxlength="40" placeholder="Your name" data-ph="ph">
+  <div><a class="btn" id="cal" target="_blank" rel="noopener" data-k="cal">Add to calendar</a></div>
+  <div class="orn">✦</div>
+</main>
+<script>
+// ---- Edit these ----
+var CONFIG = { target: new Date(2026, 10, 6, 18, 0, 0) }; // Nov 6, 2026, 6:00 PM local (countdown only)
+var T = {
+ en:{bismillah:"Together with their families",n1:"Ibrahim",n2:"Noha",verse:"Invite you to celebrate their Katb Ketab",date:"Friday, 6 November 2026",time:"Time & venue to be confirmed",days:"Days",hours:"Hours",mins:"Minutes",secs:"Seconds",note:"Your presence and prayers will make our day complete.",cal:"Add to calendar",ph:"Your name",hi:"Dear ",done:"Today is the day! 🤍"},
+ ar:{bismillah:"بسم الله الرحمن الرحيم",n1:"إبراهيم",n2:"نهى",verse:"يتشرف أهلهما بدعوتكم لحضور حفل كتب الكتاب",date:"الجمعة ٦ نوفمبر ٢٠٢٦",time:"الميعاد والمكان سيتم تأكيدهما",days:"يوم",hours:"ساعة",mins:"دقيقة",secs:"ثانية",note:"حضوركم ودعواتكم تكمل فرحتنا.",cal:"أضف إلى التقويم",ph:"اسمك",hi:"عزيزي/عزيزتي ",done:"النهارده الفرح! 🤍"}
+};
+var lang="en", $=function(i){return document.getElementById(i)};
+function render(){
+  var t=T[lang];
+  document.documentElement.lang=lang; document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  document.body.className=lang==="ar"?"ar":"";
+  document.querySelectorAll("[data-k]").forEach(function(e){e.textContent=t[e.dataset.k]});
+  $("name").placeholder=t.ph; $("lang").textContent=lang==="ar"?"English":"عربي";
+  greet(); tick();
+}
+function greet(){var v=$("name").value.trim();$("greet").textContent=v?T[lang].hi+v:""}
+function tick(){
+  var diff=CONFIG.target-new Date();
+  if(diff<=0){$("cd").style.display="none";$("greet").textContent=T[lang].done;return}
+  var f=function(n){return lang==="ar"?n.toLocaleString("ar-EG"):n};
+  $("d").textContent=f(Math.floor(diff/864e5));
+  $("h").textContent=f(Math.floor(diff/36e5)%24);
+  $("m").textContent=f(Math.floor(diff/6e4)%60);
+  $("s").textContent=f(Math.floor(diff/1e3)%60);
+}
+$("lang").onclick=function(){lang=lang==="en"?"ar":"en";render()};
+$("name").oninput=greet;
+$("cal").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Ibrahim & Noha – Katb Ketab")+"&dates=20261106/20261107";
+setInterval(tick,1000); render();
+</script>
+</body>
+</html>
